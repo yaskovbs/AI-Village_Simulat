@@ -1,47 +1,23 @@
-import { useState } from 'react';
-import Dashboard from './components/Dashboard';
-import { Toaster } from "@/components/ui/sonner"
-import ApiConfiguration from './components/ApiConfiguration';
-import { ApiConfig } from './types';
-
+import { ThemeProvider } from "@/components/theme-provider"
+import { ThemeToggle } from "@/components/theme-toggle"
+import { AgentSettingsPage } from "@/pages/AgentSettingsPage"
 
 function App() {
-  const [config, setConfig] = useState<ApiConfig | null | undefined>(undefined);
-
-  const handleConfigSuccess = (newConfig: ApiConfig | null) => {
-    setConfig(newConfig);
-  };
-
-  const renderContent = () => {
-    if (config === undefined) {
-      return (
-        <div className="flex justify-center items-center h-full">
-            <ApiConfiguration onSuccess={handleConfigSuccess} />
-        </div>
-      );
-    }
-    return <Dashboard />;
-  }
-
   return (
-    <main className="min-h-screen w-full bg-background text-foreground dark">
-        <div className="container mx-auto py-8">
-            <header className="text-center mb-8">
-                <h1 className="text-4xl font-bold tracking-tight">לוח בקרה לניהול API</h1>
-                <p className="text-muted-foreground mt-2">
-                    {config === undefined ? "הגדר את החיבור שלך כדי להתחיל" : "נהל את מפתחות ה-API שלך ועקוב אחר השימוש בהם."}
-                </p>
-            </header>
-            
-            {renderContent()}
-
-             <footer className="text-center mt-12 text-sm text-muted-foreground">
-                <p>נבנה על ידי Dualite Alpha © 2025</p>
-            </footer>
-        </div>
-        <Toaster richColors position="bottom-right" />
-    </main>
-  );
+    <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
+      <div className="min-h-screen bg-background text-foreground">
+        <header className="border-b">
+            <div className="container mx-auto flex h-16 items-center justify-between px-4">
+                <h1 className="text-xl font-bold">הגדרות סוכן</h1>
+                <ThemeToggle />
+            </div>
+        </header>
+        <main className="container mx-auto p-4 md:p-8">
+          <AgentSettingsPage />
+        </main>
+      </div>
+    </ThemeProvider>
+  )
 }
 
-export default App;
+export default App
