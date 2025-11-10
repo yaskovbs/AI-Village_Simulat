@@ -1,4 +1,4 @@
-export type ApiProviderId = 'openai' | 'anthropic' | 'google';
+export type ApiProviderId = 'openai' | 'anthropic' | 'google' | 'youtube' | 'websearch';
 
 export interface ApiProvider {
   id: ApiProviderId;
@@ -15,4 +15,6 @@ export interface UsageData {
 export interface ApiConfig {
   openaiApiKey: string;
   serperApiKey: string;
+  youtubeApiKey: string;
+  webSearchApiKey: string;
 }
