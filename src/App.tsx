@@ -1,6 +1,6 @@
 import { ThemeProvider } from "@/components/theme-provider"
 import { ThemeToggle } from "@/components/theme-toggle"
-import { AgentSettingsPage } from "@/pages/AgentSettingsPage"
+import Dashboard from "@/components/Dashboard"
 
 function App() {
   return (
@@ -8,12 +8,12 @@ function App() {
       <div className="min-h-screen bg-background text-foreground">
         <header className="border-b">
             <div className="container mx-auto flex h-16 items-center justify-between px-4">
-                <h1 className="text-xl font-bold">הגדרות סוכן</h1>
+                <h1 className="text-xl font-bold">סימולטור כפר AI</h1>
                 <ThemeToggle />
             </div>
         </header>
         <main className="container mx-auto p-4 md:p-8">
-          <AgentSettingsPage />
+          <Dashboard />
         </main>
       </div>
     </ThemeProvider>
