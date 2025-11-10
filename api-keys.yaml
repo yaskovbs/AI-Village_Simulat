@@ -1,0 +1,103 @@
+openapi: 3.0.0
+info:
+  title: API Key Management and Usage API
+  description: An example API for managing API keys and fetching usage statistics for an AI dashboard.
+  version: 1.0.0
+servers:
+  - url: https://example.com/api
+    description: Mock API Server
+
+paths:
+  /api-keys:
+    get:
+      summary: Retrieve saved API providers
+      description: Returns a list of providers for which API keys might be configured.
+      responses:
+        '200':
+          description: A list of providers.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ApiProvider'
+    post:
+      summary: Save or update an API key
+      description: Saves a new API key for a specific provider.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApiKey'
+      responses:
+        '200':
+          description: API key saved successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "API key for openai saved successfully."
+        '400':
+          description: Invalid input.
+
+  /usage-stats:
+    get:
+      summary: Get API usage statistics
+      description: Returns mock data representing API call usage over the last 7 days.
+      responses:
+        '200':
+          description: A list of daily usage statistics.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UsageData'
+
+components:
+  schemas:
+    ApiProvider:
+      type: object
+      properties:
+        id:
+          type: string
+          example: "openai"
+        name:
+          type: string
+          example: "OpenAI"
+
+    ApiKey:
+      type: object
+      required:
+        - provider
+        - key
+      properties:
+        provider:
+          type: string
+          description: The ID of the provider (e.g., 'openai', 'anthropic').
+          example: "openai"
+        key:
+          type: string
+          description: The API key.
+          example: "sk-..."
+          format: password
+
+    UsageData:
+      type: object
+      properties:
+        day:
+          type: string
+          example: "Monday"
+        openai:
+          type: integer
+          example: 120
+        anthropic:
+          type: integer
+          example: 80
+        google:
+          type: integer
+          example: 95

@@ -1,0 +1,83 @@
+openapi: 3.0.0
+info:
+  title: AI Village API
+  description: API for managing the AI Village simulation, including the world map and agents.
+  version: 1.0.0
+servers:
+  - url: https://example.com/api
+    description: Mock API server
+
+paths:
+  /world:
+    get:
+      summary: Get World Map
+      description: Retrieves the layout of the world grid, including cell types.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  gridSize:
+                    type: integer
+                    example: 20
+                  map:
+                    type: array
+                    items:
+                      type: array
+                      items:
+                        type: string
+                        enum: [grass, water, house]
+  /agents:
+    get:
+      summary: Get All Agents
+      description: Retrieves a list of all agents currently in the simulation.
+      responses:
+        '200':
+          description: A list of agents.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Agent'
+    post:
+      summary: Create a new agent
+      description: Adds a new agent to the simulation at a random valid position.
+      responses:
+        '201':
+          description: Agent created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Agent'
+
+components:
+  schemas:
+    Position:
+      type: object
+      properties:
+        x:
+          type: integer
+          description: The x-coordinate of the agent.
+        y:
+          type: integer
+          description: The y-coordinate of the agent.
+    Agent:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Unique identifier for the agent.
+        name:
+          type: string
+          description: The name of the agent.
+        position:
+          $ref: '#/components/schemas/Position'
+        status:
+          type: string
+          enum: [wandering, idle]
+          description: The current status of the agent.
