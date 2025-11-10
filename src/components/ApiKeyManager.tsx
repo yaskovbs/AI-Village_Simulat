@@ -1,6 +1,6 @@
 import { AlertCircle } from "lucide-react"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
-import { ApiProvider, ApiProviderId } from "@/types";
+import { ApiProvider } from "@/types";
 import ApiKeyCard from "./ApiKeyCard";
 
 const providers: ApiProvider[] = [

@@ -101,7 +101,7 @@ const UsageChart: React.FC<UsageChartProps> = ({ data }) => {
       .data(providers)
       .join('g')
       .attr('class', 'legend-item')
-      .attr('transform', (d, i) => `translate(${i * 110}, 0)`);
+      .attr('transform', (_, i) => `translate(${i * 110}, 0)`);
 
     legendItem.append('rect')
       .attr('width', 15)
