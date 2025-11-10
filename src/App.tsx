@@ -8,7 +8,7 @@ function App() {
       <div className="min-h-screen bg-background text-foreground">
         <header className="border-b">
             <div className="container mx-auto flex h-16 items-center justify-between px-4">
-                <h1 className="text-xl font-bold">סימולטור כפר AI</h1>
+                <h1 className="text-xl font-bold">יצירת תקצירי סרטים וסדרות עם AI</h1>
                 <ThemeToggle />
             </div>
         </header>
