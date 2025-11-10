@@ -17,7 +17,7 @@
 ### דרישות מקדימות
 
 - Node.js (גרסה 16 ומעלה)
-- Yarn או npm
+- npm (מגיע עם Node.js)
 
 ### התקנה
 
@@ -29,12 +29,12 @@ cd AI-Village_Simulat
 
 2. התקן את התלויות:
 ```bash
-yarn install
+npm install
 ```
 
 3. הפעל את שרת הפיתוח:
 ```bash
-yarn dev
+npm run dev
 ```
 
 4. פתח את הדפדפן בכתובת `http://localhost:5173`
@@ -103,19 +103,19 @@ yarn dev
 
 ```bash
 # התקנת תלויות
-yarn install
+npm install
 
 # הרצת שרת פיתוח
-yarn dev
+npm run dev
 
 # בניית הפרויקט לייצור
-yarn build
+npm run build
 
 # תצוגה מקדימה של גרסת הייצור
-yarn preview
+npm run preview
 
 # בדיקת קוד
-yarn lint
+npm run lint
 ```
 
 ## 🤝 תרומה
