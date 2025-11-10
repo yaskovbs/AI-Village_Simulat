@@ -10,7 +10,7 @@ const providers = [
   { id: 'openai', name: 'OpenAI', color: 'hsl(var(--primary))' },
   { id: 'anthropic', name: 'Anthropic', color: 'hsl(var(--secondary-foreground))' },
   { id: 'google', name: 'Google', color: 'hsl(var(--accent-foreground))' },
-  { id: 'youtube', name: 'YouTube', color: 'hsl(0 84% 60%)' },
+  { id: 'youtube', name: 'YouTube Data API v3', color: 'hsl(0 84% 60%)' },
   { id: 'websearch', name: 'חיפוש באינטרנט', color: 'hsl(217 91% 60%)' },
 ];
 
